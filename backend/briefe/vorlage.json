@@ -1,0 +1,8 @@
+{
+    "id": "vorlage",
+    "titel": "Titel",
+    "empfaenger": "Liebe/r ...",
+    "text": "Hier kommt dein Brieftext hin. \n\nDas ist ein neuer Absatz.",
+    "absender": "Dein Name",
+    "datum": "2026-10-04"   
+}
