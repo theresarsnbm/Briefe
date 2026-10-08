@@ -1,25 +1,43 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Text */
+  --text: #686258;      /* Sekundärtext, Datum, Meta */
+  --text-h: #2b2a27;    /* Haupttext und Überschriften */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Allgemeine Webseite: neutrales Off-White */
+  --page-bg: #f5f4f1;
+
+  /* Brief-Container: warmes Pergament */
+  --bg: #fff3d8;
+  --border: #dac7a4;
+  --code-bg: #f3e4c7;
+
+  /* Akzent: ruhiges Waldgrün */
+  --accent: #3f6b4f;
+  --accent-bg: rgba(63, 107, 79, 0.11);
+  --accent-border: rgba(63, 107, 79, 0.48);
+
+  /* Z. B. kleine Icon- oder Social-Buttons */
+  --social-bg: rgba(255, 243, 216, 0.72);
+
+  /* Warmer Schatten */
+  --shadow:
+    rgba(73, 57, 33, 0.16) 0 10px 15px -3px,
+    rgba(73, 57, 33, 0.10) 0 4px 6px -2px;
+
+  /* Allgemeine UI-Schrift: Datum, Buttons, Navigation */
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  /* Briefüberschrift */
+  --heading: "Lora", Georgia, "Times New Roman", serif;
+  /* Briefinhalt */
+  --serif: "Lora", Georgia, "Times New Roman", serif;
+  /* Code / technische Inhalte */
+  --mono: ui-monospace, Consolas, "Courier New", monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
-  background: var(--bg);
+  background: var(--page-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -32,17 +50,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
+    /* Text */
+    --text: #bdb9ad;
+    --text-h: #f3ecdd;
+
+    /* Allgemeine Webseite: neutrales Off-Black */
+    --page-bg: #121313;
+
+    /* Brief-Container: warmes, dunkles Grün-/Pergamentgrau */
+    --bg: #292b25;
+    --border: #4d5147;
+    --code-bg: #20221e;
+
+    /* Akzent: helleres Salbeigrün */
+    --accent: #8fc49a;
+    --accent-bg: rgba(143, 196, 154, 0.14);
+    --accent-border: rgba(143, 196, 154, 0.52);
+
+    /* Z. B. kleine Icon- oder Social-Buttons */
+    --social-bg: rgba(41, 43, 37, 0.78);
+
+    /* Dunkler Schatten */
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      rgba(0, 0, 0, 0.48) 0 10px 15px -3px,
+      rgba(0, 0, 0, 0.32) 0 4px 6px -2px;
   }
 
   #social .button-icon {

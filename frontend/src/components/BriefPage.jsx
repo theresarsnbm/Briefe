@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "../styles/brief.css";
 
 function BriefPage() {
   const { id } = useParams();
@@ -55,17 +56,20 @@ function BriefPage() {
   }
 
   return (
-    <div className="brief-container">
-      <h1 className="brief-titel">{brief.titel}</h1>
-      <p className="brief-empfaenger">{brief.empfaenger}</p>
-      <div className="brief-text">
-        {brief.text.split("\n").map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
+
+    <main className="brief-seite">
+      <div className="brief-container">
+        <h1 className="brief-titel">{brief.titel}</h1>
+        <p className="brief-empfaenger">{brief.empfaenger}</p>
+        <div className="brief-text">
+          {brief.text.split("\n").map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </div>
+        <p className="brief-absender">{brief.absender}</p>
+        <p className="brief-datum">{brief.datum}</p>
       </div>
-      <p className="brief-absender">{brief.absender}</p>
-      <p className="brief-datum">{brief.datum}</p>
-    </div>
+    </main>
   );
 }
 
