@@ -1,0 +1,223 @@
+/* ========================================
+   Umschlag-Szene
+   ======================================== */
+
+.envelope-scene {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 2rem;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--page-bg);
+}
+
+.envelope-button {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+
+  appearance: none;
+  background: transparent;
+  color: var(--text-h);
+  font: inherit;
+
+  cursor: pointer;
+}
+
+.envelope-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 10px;
+  border-radius: 8px;
+}
+
+.envelope-button:disabled {
+  cursor: default;
+}
+
+/* Feste, responsive Größe */
+.envelope {
+  position: relative;
+  display: block;
+
+  width: min(320px, calc(100vw - 3rem));
+  aspect-ratio: 1.48 / 1;
+
+  perspective: 1000px;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.18));
+}
+
+/* Umschlagrückseite */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: 6px;
+  background: #d5c6a8;
+}
+
+/* Brief im Umschlag */
+
+.envelope-letter {
+  position: absolute;
+  inset: 5% 8% 10%; /* unten mehr Abstand: vorher 4% */
+  z-index: 2;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+
+  transform: translateY(4%); /* vorher 12% */
+  transition:
+    transform 900ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    z-index 0ms linear 500ms;
+}
+
+.envelope-letter-lines {
+  position: absolute;
+  inset: 18% 12% auto;
+  height: 45%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 12px,
+    var(--border) 13px,
+    transparent 14px
+  );
+}
+
+/* Umschlagvorderseite */
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  border-radius: 6px;
+  background: #c5b28e;
+
+  clip-path: polygon(
+    0 0,
+    50% 55%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Obere Klappe */
+
+.envelope-flap {
+  position: absolute;
+  z-index: 4;
+  inset: 0 0 auto;
+
+  height: 58%;
+  background: #e2d4b8;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+  transform-origin: top center;
+  backface-visibility: hidden;
+
+  transition: transform 550ms ease-in-out;
+}
+
+/* Siegel */
+
+.envelope-seal {
+  position: absolute;
+  z-index: 5;
+  top: 52%;
+  left: 50%;
+
+  display: grid;
+  place-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: #fff9ec;
+  font-size: 1.1rem;
+
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+/* Klick-Hinweis */
+
+.envelope-hint {
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+/* Öffnungsanimation */
+
+.envelope-button.is-opening .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-button.is-opening .envelope-letter {
+  transform: translateY(-48%);
+  transition-delay: 150ms;
+}
+
+.envelope-button.is-opening .envelope-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* Einblenden der vollständigen Briefseite */
+
+.brief-reveal {
+  min-height: 100vh;
+  animation: brief-appears 500ms ease-out both;
+}
+
+@keyframes brief-appears {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Anpassung für schmale Bildschirme */
+
+@media (max-width: 420px) {
+  .envelope {
+    width: min(280px, calc(100vw - 2.5rem));
+  }
+}
+
+/* Weniger Bewegung bei entsprechender Geräteeinstellung */
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-letter,
+  .envelope-flap,
+  .envelope-seal,
+  .brief-reveal {
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+  }
+}

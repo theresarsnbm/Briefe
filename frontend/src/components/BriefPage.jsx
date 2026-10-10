@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/brief.css";
 
-function BriefPage() {
-  const { id } = useParams();
+export default function BriefPage({id: idProp}) {
+  const { id: routeId } = useParams();
+  const id = idProp ?? routeId;
   const [brief, setBrief] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -72,5 +73,3 @@ function BriefPage() {
     </main>
   );
 }
-
-export default BriefPage;
